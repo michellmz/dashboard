@@ -1,0 +1,307 @@
+/* Variables del Tema Tenki Digital */
+:root {
+    --primary: #EA1948;
+    --primary-dark: #C01538;
+    --white: #ffffff;
+    --font-stack: 'Montserrat', sans-serif;
+    --header-height: 70px;
+}
+
+/* Modo Oscuro (theme-dark) */
+body.theme-dark {
+    --bg-main: #141414;
+    --bg-card: #1c1c1c;
+    --text-primary: var(--white);
+    --text-secondary: #aaaaaa;
+    --border-color: #333333;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Modo Claro (theme-light) */
+body.theme-light {
+    --bg-main: #f0f0f0;
+    --bg-card: var(--white);
+    --text-primary: #1a1a1a;
+    --text-secondary: #666666;
+    --border-color: #cccccc;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos Globales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-stack);
+    background: var(--bg-main);
+    color: var(--text-primary);
+    transition: background 0.3s, color 0.3s;
+    min-height: 100vh;
+}
+
+/* Header */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3rem;
+    height: var(--header-height);
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.controls-group {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.user-info {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Botones de Control y CTA */
+.control-button,
+.cta-button {
+    padding: 0.6rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.control-button {
+    background: var(--border-color);
+    color: var(--text-primary);
+}
+
+.control-button:hover {
+    background: var(--text-secondary);
+}
+
+.cta-button {
+    background: var(--primary);
+    color: var(--white);
+    box-shadow: 0 5px 15px rgba(234, 25, 72, 0.3);
+}
+
+.cta-button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(234, 25, 72, 0.4);
+}
+
+/* Dashboard Grid Layout */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr repeat(3, 1fr); 
+    grid-template-rows: auto auto auto; 
+    gap: 1.5rem;
+    padding: 1.5rem;
+    max-width: 1700px;
+    margin: 0 auto;
+}
+
+.large-span {
+    grid-column: 2 / span 3;
+}
+
+/* Tarjetas de Métricas (KPIs) */
+.kpi-card {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.kpi-card h3 {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.kpi-value {
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1.1;
+}
+
+.primary-text {
+    background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.kpi-change {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    color: var(--text-secondary);
+}
+
+/* Control Panel */
+.control-panel {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    grid-row: 1 / span 3; 
+}
+
+.control-panel h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+}
+
+.filter-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.filter-group input,
+.filter-group select {
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-stack);
+}
+
+#applyFilters {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+
+/* --- INICIO DE LA CORRECCIÓN (Chart.js Scroll Bug) --- */
+
+/* Contenedores de Gráficos y Actividad */
+.chart-container,
+.recent-activity {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    
+    /* Usamos Flexbox para separar el H2 del wrapper del canvas */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Contenedor específico para el canvas */
+.canvas-wrapper {
+    position: relative; /* Requerido por Chart.js */
+    flex-grow: 1; /* Ocupa el espacio restante */
+    width: 100%;
+    min-height: 250px; /* Altura mínima para el gráfico */
+}
+
+.chart-container.large-span .canvas-wrapper {
+    min-height: 350px; /* Más altura para el gráfico principal */
+}
+
+/* --- FIN DE LA CORRECCIÓN --- */
+
+
+.chart-container h2,
+.recent-activity h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    flex-shrink: 0; /* Evita que el H2 se encoja */
+}
+
+/* Lista de Actividad Reciente */
+.recent-activity ul {
+    list-style: none;
+}
+
+.recent-activity li {
+    padding: 0.75rem 0;
+    border-bottom: 1px dashed var(--border-color);
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.recent-activity li:last-child {
+    border-bottom: none;
+}
+
+/* Responsividad para Móviles/Tablets */
+@media (max-width: 1200px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .control-panel {
+        grid-row: 1 / span 2; 
+        padding: 1rem;
+    }
+    .large-span {
+        grid-column: 2 / span 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-header {
+        padding: 0 1rem;
+        height: auto;
+        flex-direction: column;
+        text-align: center;
+        padding-bottom: 0.5rem;
+    }
+    .controls-group {
+        margin: 0.5rem 0;
+        gap: 0.75rem;
+    }
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+    .control-panel,
+    .large-span,
+    .kpi-card {
+        grid-column: 1 / -1; 
+        grid-row: auto; 
+    }
+    .control-panel h2 {
+        margin-bottom: 1rem;
+    }
+    
+    /* Asegurar altura mínima en móvil para los gráficos */
+    .chart-container.large-span .canvas-wrapper,
+    .canvas-wrapper {
+        min-height: 300px;
+    }
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tenki Stats | Internal Metrics Dashboard</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-dark">
+    <header class="dashboard-header">
+        <div class="logo">TENKI STATS</div>
+        <div class="controls-group">
+            <button id="themeToggle" class="control-button">
+                <span>Toggle Theme</span> ☀️
+            </button>
+            <div class="user-info">
+                Welcome, Analyst 👋
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-grid">
+        <section class="control-panel">
+            <h2>📊 Dashboard Controls</h2>
+            <div class="filter-group">
+                <label for="dateRange">Date Range:</label>
+                <input type="date" id="startDate" value="2025-01-01">
+                <input type="date" id="endDate" value="2025-01-31">
+            </div>
+            <div class="filter-group">
+                <label for="campaignType">Campaign Type:</label>
+                <select id="campaignType">
+                    <option value="all">All Campaigns</option>
+                    <option value="social">Social Media</option>
+                    <option value="search">Search Ads</option>
+                    <option value="email">Email Marketing</option>
+                </select>
+            </div>
+            <button id="applyFilters" class="cta-button">Apply Filters</button>
+        </section>
+
+        <div class="kpi-card">
+            <h3>Total Clicks</h3>
+            <p id="kpi-clicks" class="kpi-value primary-text" data-base="125000">125,000</p>
+            <small class="kpi-change">▲ 12% vs last month</small>
+        </div>
+        <div class="kpi-card">
+            <h3>Web Traffic</h3>
+            <p id="kpi-traffic" class="kpi-value primary-text" data-base="45000">45,000</p>
+            <small class="kpi-change">▲ 5% vs last month</small>
+        </div>
+        <div class="kpi-card">
+            <h3>Conversion Rate</h3>
+            <p id="kpi-conversion" class="kpi-value primary-text" data-base="4.2">4.2%</p>
+            <small class="kpi-change">▼ 0.3% vs last month</small>
+        </div>
+
+        <section class="chart-container large-span">
+            <h2>📈 Performance Trend</h2>
+            <div class="canvas-wrapper">
+                <canvas id="performanceChart"></canvas>
+            </div>
+        </section>
+        
+        <section class="chart-container">
+            <h2>🏷️ Campaign Distribution</h2>
+            <div class="canvas-wrapper">
+                <canvas id="distributionChart"></canvas>
+            </div>
+        </section>
+
+        <section class="recent-activity">
+            <h2>🔔 Recent Activity</h2>
+            <ul>
+                <li>[12:30] Campaign 'Solar Ad' performance up 15%.</li>
+                <li>[10:15] New user configuration saved locally.</li>
+                <li>[09:00] Daily report generation completed.</li>
+            </ul>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
